@@ -1,0 +1,44 @@
+# ---- Build directories ----
+build/
+build_Debug/
+build-*/
+out/
+bin/
+Debug/
+Release/
+
+# ---- Compiled binaries ----
+*.o
+*.obj
+*.exe
+*.out
+*.app
+*.dll
+*.so
+*.a
+
+# ---- CMake / Make files ----
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# ---- VS Code ----
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+
+# ---- Logs ----
+*.log
+
+# ---- Temporary files ----
+*.tmp
+*.cache
+
+# ---- Ignore everything except source (optional strict mode) ----
+# Uncomment if you want ONLY source files tracked
+# *
+# !*.cpp
+# !*.h
+# !*/
