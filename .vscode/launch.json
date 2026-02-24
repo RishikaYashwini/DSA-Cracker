@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/rishi/DSA-Cracker/Basics/Logical Thinking",
-      "program": "c:/Users/rishi/DSA-Cracker/Basics/Logical Thinking/build/Debug/outDebug",
+      "cwd": "c:/Users/rishi/DSA-Cracker/Basics/Logical_Thinking",
+      "program": "c:/Users/rishi/DSA-Cracker/Basics/Logical_Thinking/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
