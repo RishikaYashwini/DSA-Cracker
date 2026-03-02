@@ -238,6 +238,36 @@ void explainMultiset() {
     // rest all functions same as set
 }
 
+// 10. Unoredered Set: An unordered set is a data structure that stores unique elements in an unordered manner. It is defined in the <unordered_set> header and provides a convenient way to store and manipulate a collection of unique elements without any specific order. Unordered sets are implemented as a hash table, where each element is stored in a bucket based on its hash value, and the buckets are linked together to form the unordered set.
+void explainUnorderedSet() {
+    unordered_set<int> us; // An unordered set of integers (empty unordered set container)
+    // lower bound() and upper_bound() functions doesn't work in unordered set since it is not sorted
+    // rest all functions same as set
+    // it has better complexity than set in most cases, except some cases when collisions occur in the hash table, which can lead to worse performance than a set
+}
+
+// 11. Map: A map is a data structure that stores key-value pairs in a sorted order based on the keys. It is defined in the <map> header and provides a convenient way to store and manipulate a collection of key-value pairs. Maps are implemented as a balanced binary search tree, where each key-value pair is stored in a node, and the nodes are arranged in a way that allows for efficient searching, insertion, and deletion of elements based on the keys.
+void explainMap() {
+    map<int, int> m; // A map of integers to integers (empty map container)
+    map<pair<int, int>, int> m1; // A map of pairs of integers to integers (empty map container)
+    map<int, pair<int, int>> m2; // A map of integers to pairs of integers (empty map container)
+
+    m[1] = 2; // Adding a key-value pair to the map using the subscript operator (adds the key 1 with the value 100 to the map)
+    m.emplace(3, 1); // Adding a key-value pair to the map using the emplace() method (more efficient than using the subscript operator, adds the key 3 with the value 1 to the map)
+    m.insert({2, 4}); // Adding a key-value pair to the map using the insert() method (adds the key 2 with the value 4 to the map)
+    m1[{2, 3}] = 10;// Adding a key-value pair to the map using the subscript operator with a pair as the key (adds the key {4, 5} with the value 10 to the map)
+
+    for(auto it : m) { // Iterating through the map using a range-based for loop (iterates through each key-value pair in the map)
+        cout << "Key: " << it.first << ", Value: " << it.second << endl; // Accessing the key and value of the current key-value pair using the first and second members of the pair
+    }
+
+    cout << m[1] << endl; // Accessing the value associated with a key in the map using the subscript operator (returns the value associated with the key 1, which is 100)
+    cout << m[5] << endl; // Accessing the value associated with a key that does not exist in the map using the subscript operator (returns 0 since the key 5 does not exist in the map, and the subscript operator adds the key 5 with the default value 0 to the map)
+
+    auto it = m.find(3); // Finding a key in the map using the find() method (returns an iterator to the key-value pair if the key is found, or m.end() if the key is not found)}
+    cout << it->second << endl; // Accessing the value associated with the found key using the second member of the pair pointed to by the iterator
+
+}
 int main() {
     explainPair();
     explainVector();
@@ -248,6 +278,8 @@ int main() {
     explainPriorityQueue();
     explainSet();
     explainMultiset();
+    explainUnorderedSet();
+    explainMap();
 
     return 0;
 }
