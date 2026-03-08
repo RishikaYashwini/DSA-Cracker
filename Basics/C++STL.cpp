@@ -1,13 +1,12 @@
 // C++ STL (Standard Template Library) is a powerful set of C++ template classes to provide general-purpose classes and functions with templates. It includes algorithms and data structures that allow programmers to use them without having to implement them from scratch. The STL provides a collection of template classes and functions for data structures such as vectors, lists, queues, stacks, sets, maps, and algorithms for sorting, searching, and manipulating these data structures.
-// It consists of four main components:
+// It consists of three main components:
 // 1. Containers: These are data structures that store objects and data. Examples include vector, list, deque, set, map, etc.
 // 2. Algorithms: These are a collection of functions that perform operations on containers, such as sorting, searching, and manipulating data. Examples include sort, find, reverse, etc.
 // 3. Iterators: These are objects that point to elements in a container and allow programmers to traverse through the elements of a container. They provide a way to access and manipulate the elements of a container without exposing the underlying implementation details.
-// 4. Functors: These are objects that act like functions and are used in algorithms to customize behavior.
 #include <bits/stdc++.h>
 using namespace std;
 
-// Containers
+// Containers and Iterators in C++ STL:
 
 // 1.Pair: A pair is a simple container that holds two values of any type. It is defined in the <utility> header and is used to store a pair of values together. The first value is accessed using the 'first' member, and the second value is accessed using the 'second' member.
 void explainPair() {
@@ -267,6 +266,73 @@ void explainMap() {
     auto it = m.find(3); // Finding a key in the map using the find() method (returns an iterator to the key-value pair if the key is found, or m.end() if the key is not found)}
     cout << it->second << endl; // Accessing the value associated with the found key using the second member of the pair pointed to by the iterator
 
+    it = m.find(5); // Finding a key that does not exist in the map using the find() method (returns m.end() since the key 5 is not found in the map)
+
+    auto it1 = m.lower_bound(2); // Finding the lower bound of a key in the map using the lower_bound() method (returns an iterator to the first key-value pair that is not less than the given key, or m.end() if no such key exists)
+    auto it2 = m.upper_bound(3); // Finding the upper bound of a key
+
+    // in the map using the upper_bound() method (returns an iterator to the first key-value pair that is greater than the given key, or m.end() if no such key exists)
+
+    // erase, swap, clear, empty functions same as above
+}
+
+// 12. Multimap: A multimap is a data structure that stores multiple key-value pairs with the same key in a sorted order based on the keys. It is defined in the <map> header and provides a convenient way to store and manipulate a collection of key-value pairs that may have duplicate keys. Multimaps are implemented as a balanced binary search tree, where each key-value pair is stored in a node, and the nodes are arranged in a way that allows for efficient searching, insertion, and deletion of elements based on the keys.
+void explainMultimap() {
+    // everything same as map, but it allows duplicate keys
+    // so multiple key-value pairs with the same key can be stored in the multimap.
+    // The find() method returns an iterator to the first key-value pair with the given key
+    // the count() method returns the number of key-value pairs with the given key in the multimap.
+}
+
+// 13. Unordered_map: An unordered_map is a data structure that stores key-value pairs in a hash table, providing average constant-time complexity for insertion, deletion, and lookup operations. It is defined in the <unordered_map> header and is useful when you need fast access to elements based on their keys without requiring them to be sorted.
+void explainUnorderedMap() {
+    // everything same as map, but it is implemented as a hash table
+    // so the keys are not stored in a sorted order
+    // and the operations have average constant-time complexity
+}
+
+bool compare(pair<int, int> p1, pair<int, int> p2) { // A custom comparison function for sorting pairs based on the second element of the pair
+    if(p1.second < p2.second) return true; // Returns true if the second element of p1 is less than the second element of p2, false otherwise
+    if(p1.second > p2.second) return false;
+    // they are equal, so sort by first element in descending order
+    if(p1.first > p2.first) return true; // If second elements are equal, sort by first element in descending order
+    return false;
+}
+
+// Algorithms in C++ STL:
+void explainAlgorithms() {
+    int a[] = {5, 2, 9, 1, 5, 6}; // An array of integers
+    int n = sizeof(a) / sizeof(a[0]); // Getting the size of the
+    sort(a, a + n); // Sorting an array in ascending order using the sort() algorithm (sorts the elements in the range [a, a + n) in ascending order)
+    vector<int> v = {5, 2, 9, 1, 5, 6}; // A vector of integers
+    sort(v.begin(), v.end()); // Sorting a vector in ascending order using the sort() algorithm (sorts the elements in the range [v.begin(), v.end()) in ascending order)
+
+    sort(a+2,a+4); // Sorting a subarray of the array in ascending order using the sort() algorithm (sorts the elements in the range [a + 2, a + 4) in ascending order)
+    sort(a,a+n, greater<int>()); // Sorting an array in descending order using the sort() algorithm with a custom comparison function (sorts the elements in the range [a, a + n) in descending order)
+
+    pair<int, int> arr[] = { {1, 2}, {2, 1}, {4, 1} }; // An array of pairs
+
+    // sort it according to second element
+    // if second element is same,
+    // then sort according to first element but descending
+
+    sort(arr, arr + 3, compare); // Sorting an array of pairs using a custom comparison function (sorts the elements in the range [arr, arr + 3) based on the second element of the pairs in ascending order, and if the second elements are equal, sorts based on the first element in descending order)
+
+    int num = 7;
+    int cnt = __builtin_popcount(num); // Counting the number of set bits (1s) in the binary representation of an integer using the __builtin_popcount() function (returns the number of set bits in the binary representation of num)
+
+    long long num2 = 154598080385083068;
+    int cnt2 = __builtin_popcountll(num2); // Counting the number of set bits (1s) in the binary representation of a long long integer using the __builtin_popcountll() function (returns the number of set bits in the binary representation of num2)
+
+    string str = "123"; // A string
+    sort(str.begin(), str.end()); // Sorting a string in ascending order using the sort()
+
+    do{
+        cout << str << endl; // Printing the current permutation of the string
+    } while(next_permutation(str.begin(), str.end())); // Generating the next permutation of the string using the next_permutation() algorithm (generates the next lexicographical permutation of the elements in the range [str.begin(), str.end()))
+
+    int maxi = *max_element(a, a + n); // Finding the maximum element in an array using the max_element() algorithm (returns an iterator to the maximum element in the range [a, a + n))
+    int mini = *min_element(a, a + n); // Finding the minimum element in
 }
 int main() {
     explainPair();
@@ -280,6 +346,10 @@ int main() {
     explainMultiset();
     explainUnorderedSet();
     explainMap();
+    explainMultimap();
+    explainUnorderedMap();
+    explainAlgorithms();
 
     return 0;
 }
+~
