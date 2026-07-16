@@ -14,10 +14,10 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-void recursiveInsertionSort(vector<int>& nums, int n) {
+vector<int> recursiveInsertionSort(vector<int>& nums, int n) {
     // Base case: If the array size is 1 or less, it's already sorted
     if (n <= 1) {
-        return;
+        return nums;
     }
     for(int j = n-1; j > 0; j--) {
         if(nums[j] < nums[j-1]) {
